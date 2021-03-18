@@ -53,13 +53,6 @@ class TicTacToe {
         }
     }
 
-    diagonalIsAlreadyTaken() {
-        return ((this.board[0][0] === 'O' && this.board[1][1] === 'O' && this.board[2][2] === 'O') || 
-        (this.board[0][0] === 'X' && this.board[1][1] === 'X' && this.board[2][2] === 'X')) ||
-        ((this.board[0][2] === 'O' && this.board[1][1] === 'O' && this.board[2][0] === 'O') || 
-        (this.board[0][2] === 'X' && this.board[1][1] === 'X' && this.board[2][0] === 'X'));
-    }
-
     isFirstPlayerState() {
         return this.currentstate === '';
     }
@@ -96,6 +89,13 @@ class TicTacToe {
                 return true;
             }
         }
+    }
+
+    diagonalIsAlreadyTaken() {
+        return ((this.board[0][0] === 'O' && this.board[1][1] === 'O' && this.board[2][2] === 'O') || 
+        (this.board[0][0] === 'X' && this.board[1][1] === 'X' && this.board[2][2] === 'X')) ||
+        ((this.board[0][2] === 'O' && this.board[1][1] === 'O' && this.board[2][0] === 'O') || 
+        (this.board[0][2] === 'X' && this.board[1][1] === 'X' && this.board[2][0] === 'X'));
     }
 }
 

@@ -9,6 +9,11 @@ class TicTacToe {
         this.player = ['O', 'X'];
         this.runningCount = 1;
         this.currentstate = '';
+        this.alreadyTakenMsg = 'This field is already taken';
+        this.samePlayerAreRunningMsg = 'The same player cannot take two turn in one time';
+        this.rowAlreadyTakenMsg = 'row are taken by a player: ';
+        this.colAlreadyTakenMsg = 'column are taken by a player: ';
+        this.diagonalAlreadyTakenMsg = 'diagonal are taken by a player: ';
     }
 
     board() {
@@ -29,28 +34,29 @@ class TicTacToe {
         }
 
         if(this.isNotCorrectCurrentState(player)) {
-            return 'error';
+            return this.samePlayerAreRunningMsg;
         }
 
         if(this.isAlreadyTaken(row, col)) {
-            return 'This field is already taken';
+            return this.alreadyTakenMsg;
         }
 
         this.board[row][col] = player;
-        this.runningCount += 1;
-        this.currentstate = player === 'O' ? 'X' : 'O';
 
         if(this.rowIsAlreadyTaken()) {
-            return 'row are taken by a player: ' + player;
+            return this.rowAlreadyTakenMsg + player;
         }
 
         if(this.colIsAlreadyTaken()) {
-            return 'column are taken by a player: ' + player;
+            return this.colAlreadyTakenMsg + player;
         }
 
         if(this.diagonalIsAlreadyTaken()) {
-            return 'diagonal are taken by a player: ' + player;
+            return this.diagonalAlreadyTakenMsg + player;
         }
+
+        this.runningCount += 1;
+        this.currentstate = player === 'O' ? 'X' : 'O';
     }
 
     isFirstPlayerState() {

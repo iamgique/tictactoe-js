@@ -42,7 +42,7 @@ it('a player can take a field if not already taken', () => {
 
 it('players take turns taking fields until the game is over', () => {
     game.running(game.player[1], 0, 0);
-    expect(game.running(game.player[1], 1, 1)).toEqual('error');
+    expect(game.running(game.player[1], 1, 1)).toEqual('The same player cannot take two turn in one time');
 });
 
 it('a game is over when all fields in a row are taken by a player', () => {

@@ -50,7 +50,7 @@ it('a game is over when all fields in a row are taken by a player', () => {
     game.running(game.player[0], 1, 0);
     game.running(game.player[1], 0, 1);
     game.running(game.player[0], 1, 1);
-    expect(game.running(game.player[1], 0, 2)).toEqual('row are taken by a player');
+    expect(game.running(game.player[1], 0, 2)).toEqual('row are taken by a player: X');
 });
 
 it('a game is over when all fields in a column are taken by a player', () => {
@@ -58,11 +58,23 @@ it('a game is over when all fields in a column are taken by a player', () => {
     game.running(game.player[0], 0, 1);
     game.running(game.player[1], 1, 0);
     game.running(game.player[0], 1, 1);
-    expect(game.running(game.player[1], 2, 0)).toEqual('column are taken by a player');
+    expect(game.running(game.player[1], 2, 0)).toEqual('column are taken by a player: X');
 });
 
 it('a game is over when all fields in a diagonal are taken by a player', () => {
-    
+    game.running(game.player[0], 0, 0);
+    game.running(game.player[1], 0, 1);
+    game.running(game.player[0], 1, 1);
+    game.running(game.player[1], 0, 2);
+    expect(game.running(game.player[0], 2, 2)).toEqual('diagonal are taken by a player: O');
+});
+
+it('a game is over when all fields in a back diagonal are taken by a player', () => {
+    game.running(game.player[0], 0, 2);
+    game.running(game.player[1], 0, 1);
+    game.running(game.player[0], 1, 1);
+    game.running(game.player[1], 1, 2);
+    expect(game.running(game.player[0], 2, 0)).toEqual('diagonal are taken by a player: O');
 });
 
 /*
@@ -74,6 +86,4 @@ In random order
 - a game is over when all fields in a row are taken by a player
 - a game is over when all fields in a column are taken by a player
 - a game is over when all fields in a diagonal are taken by a player
-
-
 */

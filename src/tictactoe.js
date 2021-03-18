@@ -41,11 +41,20 @@ class TicTacToe {
         this.currentstate = player === 'O' ? 'X' : 'O';
 
         if(this.rowIsAlreadyTaken()) {
-            return 'row are taken by a player';
+            return 'row are taken by a player: ' + player;
         }
 
         if(this.colIsAlreadyTaken()) {
-            return 'column are taken by a player';
+            return 'column are taken by a player: ' + player;
+        }
+
+        for(let i = 0; i < 3; i++) {
+            if(((this.board[0][0] === 'O' && this.board[1][1] === 'O' && this.board[2][2] === 'O') || 
+                (this.board[0][0] === 'X' && this.board[1][1] === 'X' && this.board[2][2] === 'X')) ||
+                ((this.board[0][2] === 'O' && this.board[1][1] === 'O' && this.board[2][0] === 'O') || 
+                (this.board[0][2] === 'X' && this.board[1][1] === 'X' && this.board[2][0] === 'X'))) {
+                    return 'diagonal are taken by a player: ' + player;
+            }
         }
     }
 
@@ -54,9 +63,7 @@ class TicTacToe {
     }
 
     setFirstPlayerState(player) {
-        if(this.currentstate === '') {
-            this.currentstate = player;
-        }
+        this.currentstate = player;
     }
 
     isOver() {

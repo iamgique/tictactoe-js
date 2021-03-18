@@ -48,14 +48,23 @@ class TicTacToe {
             return 'column are taken by a player: ' + player;
         }
 
-        for(let i = 0; i < 3; i++) {
-            if(((this.board[0][0] === 'O' && this.board[1][1] === 'O' && this.board[2][2] === 'O') || 
-                (this.board[0][0] === 'X' && this.board[1][1] === 'X' && this.board[2][2] === 'X')) ||
-                ((this.board[0][2] === 'O' && this.board[1][1] === 'O' && this.board[2][0] === 'O') || 
-                (this.board[0][2] === 'X' && this.board[1][1] === 'X' && this.board[2][0] === 'X'))) {
-                    return 'diagonal are taken by a player: ' + player;
-            }
+        if(this.diagonalIsAlreadyTaken()) {
+            return 'diagonal are taken by a player: ' + player;
         }
+
+        if(((this.board[0][0] === 'O' && this.board[1][1] === 'O' && this.board[2][2] === 'O') || 
+            (this.board[0][0] === 'X' && this.board[1][1] === 'X' && this.board[2][2] === 'X')) ||
+            ((this.board[0][2] === 'O' && this.board[1][1] === 'O' && this.board[2][0] === 'O') || 
+            (this.board[0][2] === 'X' && this.board[1][1] === 'X' && this.board[2][0] === 'X'))) {
+                return 'diagonal are taken by a player: ' + player;
+        }
+    }
+
+    diagonalIsAlreadyTaken() {
+        return ((this.board[0][0] === 'O' && this.board[1][1] === 'O' && this.board[2][2] === 'O') || 
+        (this.board[0][0] === 'X' && this.board[1][1] === 'X' && this.board[2][2] === 'X')) ||
+        ((this.board[0][2] === 'O' && this.board[1][1] === 'O' && this.board[2][0] === 'O') || 
+        (this.board[0][2] === 'X' && this.board[1][1] === 'X' && this.board[2][0] === 'X'));
     }
 
     isFirstPlayerState() {
